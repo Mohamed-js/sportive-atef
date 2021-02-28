@@ -1,0 +1,63 @@
+
+<div class="cover">
+<span class="choose bg-orange white">TOP RANKED</span>
+    <%= link_to article_path(@top_article.id) do %>
+      <%= image_tag @top_article.image.downcase, class:'cover-img full' %>
+      <div class="cover-gradient position-absolute full"></div>
+      <div class="cover-text p-3">
+          <h3 class="orange"><%= @top_article.title %></h3>
+          <h6 class="text-nowrap"> <%= @top_article.text %> </h6>
+      </div>
+    <% end %>
+</div>
+
+<div class="cards-holder d-flex flex-row">
+    <% @categories.each do |cat| %>
+    <% if !cat.articles.last.nil? %>
+      <div class="my-card ">
+
+      <%= link_to article_path(cat.articles.last.id) do %>
+          <%= image_tag "#{cat.articles.last.image.downcase}", class:'cover-img full' %>
+          <div class="cover-gradient position-absolute"></div>
+          <div class="my-card-text p-3">
+              <h3 class="my-card-cat"><%= cat.name.capitalize %></h3>
+              <h4><%= cat.articles.last.title %></h4>
+          </div>
+      <% end %> 
+
+      </div>
+    <% end %>    
+    <% end %>
+</div>
+
+
+
+<div class="container-fluid m-0 p-3 w-100">
+  <nav class="navbar navbar-expand-lg p-0">
+      <ul class=" cat-nav me-auto mb-2 mb-lg-0">
+      <% if !@categories.nil? %>
+        <% @categories.each do |cat| %>
+            <li class="nav-item">
+                <strong><%= link_to cat.name.upcase, category_path(cat.id), class: "nav-link active white" %></strong>
+            </li>
+        <% end %>
+      <% end %> 
+      </ul>
+  </nav>
+
+  <div class="row p-2 random-art">
+    <% if !@random_article.nil? %>
+      <div class="col-7 vid position-relative">
+        <%= image_tag "#{@random_article.image.downcase}", class:"cover-img full" %>
+        <span class="choose">WE PICKED YOU</span>
+      </div>
+      <div class="col-5 d-flex flex-column justify-content-center">
+        <h2 class="white"><%=@random_article.title.upcase %></h2>
+        <h2 class="orange">BY: <%= @random_article.author.name.upcase %></h2>
+        <h5 class="white">
+          <%= @random_article.text.capitalize %>
+        </h5>
+      </div>
+    <% end %>  
+  </div>
+</div><br><br><br>

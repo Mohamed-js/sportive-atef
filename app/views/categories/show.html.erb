@@ -1,0 +1,92 @@
+<div class="h-100">
+
+<% reverse = true %>
+<% @articles.each_slice(2) do |article1, article2| %>
+
+  <% if reverse %>
+    <div class="row vertical-card">
+      <div class="col-6 ha">
+        <div class="row">
+          <div class="col-6">
+            <%= link_to article_path(article1.id) do %>
+            <%= image_tag "#{article1.image.downcase}", class:"cover-img full" %>
+            <% end %>
+          </div>
+          <div class="col-6 p-3 d-flex flex-column justify-content-between bg-purple">
+            <h3 class="my-card-catt"><%= @category.name.capitalize %></h3>
+            <strong><h4><%=article1.title%> </h4></strong>
+            <p class="my-card-textt"><%=article1.text%></p>
+            <p class="text-wrap">BY:<strong><%=article1.author.name%></strong></p>
+            <%= Category.voted(session[:current_user]["id"], article1).html_safe %>
+          </div>
+        </div>
+      </div>
+      <% if !article2.nil? %>
+      <div class="col-6 ha">
+        <div class="row">
+          <div class="col-6">
+            <%= link_to article_path(article2.id) do %>
+            <%= image_tag "#{article2.image.downcase}", class:"cover-img full" %>
+            <% end %>
+          </div>
+          <div class="col-6 p-3 d-flex flex-column justify-content-between bg-purple">
+            <h3 class="my-card-catt"><%= @category.name.capitalize %></h3>
+            <strong><h4><%=article2.title%></h4></strong>
+            <p class="my-card-textt"><%=article2.text%></p>
+            <p class="text-wrap">BY:<strong><%=article2.author.name%></strong></p>
+            <%= Category.voted(session[:current_user]["id"], article2).html_safe %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+  <% reverse = false %>
+  <% else %>
+
+    <div class="row vertical-card">
+      <div class="col-6 ha">
+        <div class="row">
+          <div class="col-6 p-3 d-flex flex-column justify-content-between bg-purple">
+            <h3 class="my-card-catt"><%= @category.name.capitalize %></h3>
+            <strong><h4><%=article1.title%> </h4></strong>
+            <h6 class="my-card-textt"><%=article1.text%></h6>
+            <p class="text-wrap">BY:<strong><%=article1.author.name%></strong></p>
+            <%= Category.voted(session[:current_user]["id"], article1).html_safe %>
+          </div>
+          <div class="col-6">
+            <%= link_to article_path(article1.id) do %>
+            <%= image_tag "#{article1.image.downcase}", class:"cover-img full" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% if !article2.nil? %>
+      <div class="col-6 ha">
+        <div class="row">
+          <div class="col-6 p-3 d-flex flex-column justify-content-between bg-purple">
+            <h3 class="my-card-catt"><%= @category.name.capitalize %></h3>
+            <strong><h4><%=article2.title%> </h4></strong>
+            <p class="my-card-textt"><%=article2.text%></p>
+            <p class="text-wrap">BY:<strong><%=article2.author.name%></strong></p>
+            <%= Category.voted(session[:current_user]["id"], article2).html_safe %>
+          </div>
+          <div class="col-6">
+            <%= link_to article_path(article2.id) do %>
+            <%= image_tag "#{article2.image.downcase}", class:"cover-img full" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% reverse = true %>
+  <% end %>
+<% end %>
+</div><br><br><br><br><br>
+
+
+
+
+
+
+

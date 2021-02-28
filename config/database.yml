@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 222333 #<-- which you have defiend while installing postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: sportive_development
+
+test:
+  <<: *default
+  database: sportive_test
+
+production:
+  <<: *default
+  database: sportive_production
+  username: username
+  password: <%= ENV['PROJECT_DATABASE_PASSWORD'] %>
+  

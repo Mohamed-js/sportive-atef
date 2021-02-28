@@ -1,0 +1,24 @@
+<div class="container h-100 white">
+
+<div class="d-flex justify-content-between">
+  <%= link_to '<h4 class="m-0"><i class="fas fa-arrow-left"></i></h4>'.html_safe, :back, class:"nav-link btn orange" %>
+
+  <% if @votee.empty? %>
+    <%= link_to '<h6 class="m-0"><i class="fas fa-caret-square-up"></i></h6><strong><h6>UP VOTE</h6></strong>'.html_safe, "/votes/vote_up/#{@article.id}", method: :get, class:"d-flex flex-column align-items-center nav-link btn orange" %>
+  <% end %>
+
+  <div class="nav-link btn orange"><h6 class="m-0"><i class="fas fa-eye"></i></h6><strong><h6><%= @article.votes.count %> Votes</h6></strong></div>
+</div>
+
+<br><br><h1 class="text-center"><strong><%= @article.title.upcase %></strong></h1><br>
+
+<%= image_tag "#{@article.image.downcase}", class:"cover-img full img-max-height" %>
+
+<br><br><br><br>
+
+<h2><strong>Article:</strong></h2>
+<p><%= @article.text %></p>
+
+
+
+</div><br><br><br><br><br>

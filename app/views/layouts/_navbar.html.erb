@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-purple-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand padding-right white" href="/articles"><div>Sportive <span class="after"></span></div></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item main">
+            <strong><%= link_to 'HOME', articles_path, class: "nav-link active orange" %></strong>
+        </li>
+        <li class="nav-item">
+            <strong><%= link_to 'NEW ARTICLE', new_article_path, class: "nav-link white" %></strong>
+        </li>
+        
+       
+      </ul>
+        <ul class="navbar-nav ">
+            <% if session[:current_user] != nil %>
+                <li class="nav-item">
+                    <a class="nav-link bold white"><%= session[:current_user]['name'].capitalize %> |</a> 
+                </li>
+                
+                <li class="nav-item" >
+                    <%= link_to "LOGOUT", users_logout_path, class: "btn orange bold", method: :post %>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                    <a class="nav-link bold white" href="/users/new">LOGIN |</a> 
+                </li>              
+                <li class="nav-item">
+                    <%= link_to 'REGISTER', new_user_path, class: "nav-link orange bold" %>
+                </li>
+            <% end %>
+      </ul>
+    </div>
+  </div>
+</nav> 

@@ -1,0 +1,39 @@
+<%= form_with(model: article) do |form| %>
+  <% if article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% categories = Category.all %>
+  <div class="field form-group">
+    <%= form.label "Category" %>
+    <%= select_tag "article[#{:category_id}]", options_from_collection_for_select(categories, "id", "name"), class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class:"form-control", minlength:6%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :text %>
+    <%= form.text_area :text, class:"form-control", minlength:20 %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :image %>
+    <%= select_tag "article[#{:image}]", options_for_select(["Messi","Cristiano","Kaka","lewando","Stadium1","Stadium2","Stadium3","Basketball1","Basketball2","Basketball3","Car1","Car2"]), class:"form-control" %>
+  </div>
+
+<br>
+  <div class="actions">
+    <%= form.submit "Post Article", class:"btn white bg-orange" %>
+  </div>
+<% end %>
