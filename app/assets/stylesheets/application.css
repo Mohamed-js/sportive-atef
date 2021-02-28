@@ -40,6 +40,10 @@ body {
     color: white;
 }
 
+.nav-create {
+    display: none;
+}
+
 .cont {
     max-width: 1170px;
     margin: auto;
@@ -316,6 +320,14 @@ a.orange {
 }
 
 
+
+.create-article {
+    color: #f76108!important;
+    padding-top: 2px!important;
+    padding-bottom: 2px!important;
+    border-radius: 3px;
+}
+
 .choose {
     position: absolute;
     top: 0;
@@ -347,6 +359,30 @@ a.orange {
     }
     .vertical-card {
         height: 500px;
+    }
+
+    .nav-create {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .navbar-brand {
+        padding: 5px;
+        width: fit-content!important;
+    }
+
+    nav.navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row;
+    }
+
+    .navbar-expand-lg .container-fluid {
+        width: fit-content!important;
+        padding-right: 0;
+        
     }
 }
 

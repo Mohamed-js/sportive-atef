@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-purple-dark sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand padding-right white" href="/articles"><div>Sportive <span class="after"></span></div></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%
+=begin%>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> 
+<%
+=end%>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item main">
@@ -35,4 +39,30 @@
       </ul>
     </div>
   </div>
+  <ul class="navbar-nav px-1 nav-create justify-content-between align-items-center">
+
+
+      <strong><%= link_to '+', new_article_path, class: "nav-link white  create-article bg-purple p-2 d-flex align-items-center" %></strong>
+
+
+    <div class="d-flex flex-row">
+              <% if session[:current_user] != nil %>
+                  <li class="nav-item">
+                      <a class="nav-link bold white"><%= session[:current_user]['name'].capitalize %> |</a> 
+                  </li>
+                  
+                  <li class="nav-item" >
+                      <%= link_to "LOGOUT", users_logout_path, class: "btn orange bold", method: :post %>
+                  </li>
+              <% else %>
+                  <li class="nav-item">
+                      <a class="nav-link bold white" href="/users/new">LOGIN |</a> 
+                  </li>              
+                  <li class="nav-item">
+                      <%= link_to 'REGISTER', new_user_path, class: "nav-link orange bold" %>
+                  </li>
+              <% end %>
+    </div>
+  </ul>
+  
 </nav> 
