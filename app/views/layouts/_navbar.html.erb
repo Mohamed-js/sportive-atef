@@ -48,18 +48,18 @@
     <div class="d-flex flex-row">
               <% if session[:current_user] != nil %>
                   <li class="nav-item">
-                      <a class="nav-link bold white"><%= session[:current_user]['name'].capitalize %> |</a> 
+                      <a class="nav-link bold p-1 white"><%= session[:current_user]['name'].capitalize %> |</a> 
                   </li>
                   
                   <li class="nav-item" >
-                      <%= link_to "LOGOUT", users_logout_path, class: "btn orange bold", method: :post %>
+                      <%= link_to "LOGOUT", users_logout_path, class: "btn p-1 orange bold", method: :post %>
                   </li>
               <% else %>
                   <li class="nav-item">
-                      <a class="nav-link bold white" href="/users/new">LOGIN |</a> 
+                      <a class="nav-link p-1 bold white" href="/users/new">LOGIN |</a> 
                   </li>              
                   <li class="nav-item">
-                      <%= link_to 'REGISTER', new_user_path, class: "nav-link orange bold" %>
+                      <%= link_to 'REGISTER', new_user_path, class: "nav-link p-1 orange bold" %>
                   </li>
               <% end %>
     </div>
