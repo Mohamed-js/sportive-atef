@@ -13,7 +13,7 @@ View articles, categories, create articles and vote them up!
 
 
 ## Live demo
-- [Live demo](https://sportive-dev.herokuapp.com/)
+- [Live demo](https://sportive-atef.herokuapp.com/)
 
 
 
