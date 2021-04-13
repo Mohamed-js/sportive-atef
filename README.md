@@ -1,6 +1,6 @@
 # Sportive - Capstone project
 
-View articles, categories, create articles and vote them up!
+A site where you can view articles, categories, create articles and vote them up!
 
 ### Screenshot
 ![screenshot](screenshot.png)
